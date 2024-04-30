@@ -10,6 +10,15 @@
   - 18030251223
 - 体验账号
 # 人才猎手 多选地址
+【增加多选地址功能】
+https://www.tapd.cn/37438467/prong/stories/view/1137438467001008398
+
+新增字段
+TTJobListModel -》mulAddr
+HGJobModel： -》
+NSArray <JobCompWorkAddressModel *> *workAddressList;// 工作地址
+JobCompWorkAddressModel -》 BOOL isSelectedLocal; 本地选中
+
 /heygood-recruit/company/common/getCompJobCateList
 接口增加返回 mulAddr 字段 0：表示不支持多地址，1：表示支持多地址
 

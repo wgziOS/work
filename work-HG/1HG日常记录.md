@@ -13,8 +13,56 @@
 - 其他账号
 测试版 18030251115  密码 251115
 
-# 7
+# 7 16
+word_delete_icon
+http://view.xdocin.com/xdoc
+本地搜索
+NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(HGFriendModel *evaluatedObject, NSDictionary *bindings) {
+            return [evaluatedObject.friendName containsString:searchText];
+        }];
+        self.filteredFriends = [self.dataMuArray filteredArrayUsingPredicate:predicate];
 
+
+JXPagerViewDelegate,JXCategoryViewDelegate
+
+淡蓝色   背景灰色
+EFF4FF  f1f1f1
+字体 999999 灰色  037afe 蓝色
+
+
+swift 的项目，默认进入是登录页面，登录后展示一个tabbarController，下的四个页面。
+
+# 8
+
+        contentView.layer.cornerRadius = 9
+        contentView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+
+
+oc代码实现一个录音机的功能：
+1、有暂停有恢复录制有停止的功能；
+2、录音机实时录制的时候5秒回调出去录音数据；
+3、结束录音的时候回调完整的录音数据；
+两个线程同时
+一个线程读录音机数据放进队列，另个线程从队列取数据给引擎
+
+
+# 7
+账号 13599580520
+ @"1455744458007883777" @"1455776332805681154"
+jumpNextExcelWith 蒋书容（总监） departId:1455744458007883777
+jumpNextExcelWith 汤锦良美业 departId:1455776332805681154
+backUpLevel - departId:1455776332805681154 level:1
+
+// 将 view1 移到最前面
+[self.view bringSubviewToFront:view1];
+
+// 将 view2 移到最后面
+[self.view sendSubviewToBack:view2];
+
+
+getSaleDepartManagerTaskListWithDepartId
+
+参考抖音一比一 要比抖音更牛逼
 let input = HGWxCrowdAutoFetchingModel()
         input.autoOpenWxCrowdAdd = sender.isSelected ? 0 : 1
         input.wxId = currentModel.wxId;
@@ -295,6 +343,7 @@ vc.isWechat = YES;
 vc.isFromDouyinHuoke = YES;
 
 - 转正
+接入火山实时音视频SDK、实现多人语言会议
 
 工作业绩结果描述（数据量化）
 
@@ -894,7 +943,8 @@ SampleHandler
 }
 
 # 4.15
-会议操作栏显示隐藏动画优化、全屏时字幕显示完善、
+利用FFmpeg库，实现了音频文件音量的增益、降噪；视频文件的格式转化；截取视频指定时间段、视频拼接
+
 FFMpeg
 音视频转码：将音频或视频文件从一个格式转换为另一个格式，例如将MP4视频转换为AVI格式或将音频从MP3转换为AAC格式。
 

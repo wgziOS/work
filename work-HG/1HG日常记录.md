@@ -13,30 +13,223 @@
 - 其他账号
 测试版 18030251115  密码 251115
 
-# 726
-测试密码
-# 722
+HGBusinessReaderScoreView 星星评分
+
+#
+
+#  弹窗：
+    /// 导航 更多点击
+    @objc func navMoreTapped() {
+        print("navMoreTapped")
+        guard let window = UIApplication.shared.keyWindow  else { return }
+        let topSafeHeight = window.safeAreaInsets.top
+        let filterView = HGChatActionMenuView(position: CGPoint(x: kScreenWidth - 200, y: kNavBarHeight + topSafeHeight - 20),
+                                              width: 190,
+                                              height: 45*5+20)
+        filterView.didSelectedItem = { [unowned self] item in
+            if item.id == .add {
+            } else if item.id == .delete {
+                self.showDeleteAlert()
+            } else if item.id == .rename {
+                self.editButtonTapped()
+            }
+        }
+        filterView.showInView(window)
+    }
+# 重命名：
+        guard let alertView = Bundle.main.loadNibNamed("HGRecordingInputView", owner: self, options: nil)?.first as? HGRecordingInputView else { return }
+        alertView.title = self.titleLabel.text ?? ""
+        alertView.didSelectedConfirm = { title in
+            self.updateTitleRequest(title)
+        }
+        alertView.showAlert()
+
+
+#  
+-----------NSURLResponseURL:https://ai.xmheigu.com//heygood-video/hyms/hymsDialogueGroup/householdPolicyInquiry request:{"userId":"1578576576195346433","question":"全文","groupId":""} response:{"success":true,"message":"","code":200,"result":{"assistantId":null,"instructContent":null,"groupId":null},"data":null,"timestamp":1723190174022}-----------
+
+swift 从原始字符串数组里一个个顺序添加 到数组b,添加的规则是，元素里字符串长度乘以2就是添加的时间，如第一个字符串“abc”长度3，则添加到数组b（准备添加到b ，但是要先添加第一个字符“a”到数组B，之后每0.5秒从“abc”里第二个字符串开始拼接到result字符串“”后面得到新的“abc”，才添加到数组b）后6秒才添加第二个元素 以此类推。
+
+```Swift
+total：口相关信息涉及诸多方面。包括户口迁移。变更等具体事项  messageContent = "。收到"
+
+// messageContent 包含 冒号 句号 感叹号 时，在total的最后一个字符串往前（后往前）找到第一个（冒号 句号 感叹号）的前面字符串（例如total：口相关信息涉及诸多方面。包括户口迁移。变更等具体事项  messageContent = "。收到"，则找出 "变更等具体事项"）找出的字符串插入到 speekTaskArray
+                        // swift 一个可变数组 speekTaskArray 一边插入content。我一个朗读的任务 一边从这个数组按顺序取元素去进行朗读任务。朗读类读完有回调继续。
+                        self.helper.speak(text: text) {
+
+                              }
+func addSpeechTask(_ text: String) {
+        speakTaskArray.append(text)
+        if speakTaskArray.count == 1 {
+            speakNextTask()
+        }
+    }
+
+    func speakNextTask() {
+        guard let text = speakTaskArray.first else {
+            // No more tasks to speak
+            return
+        }
+
+        self.helper.speak(text: text) {
+            // Speech completion callback
+            self.speakTaskArray.removeFirst()
+            self.speakNextTask() // Speak the next task
+        }
+    }
+
+todo
+我的cell的bgView的约束是这样。bgView.layer.cornerRadius = 15
+bgView.snp.makeConstraints { make in
+make.leading.equalTo(contentView.snp.leading).offset(15)
+make.centerY.equalTo(contentView.snp.centerY)
+make.width.greaterThanOrEqualTo(40)
+make.width.lessThanOrEqualTo(kScreenWidth - 60)
+make.top.equalTo(contentView.snp.top).offset(10)
+make.bottom.equalTo(contentView.snp.bottom).offset(-10)
+}
+内容撑开高度，tableView的最后一个cell我高频率刷新这个cell。 会有卡帧的感觉 怎么优化
+
+
+//                    let currentDate = Date()
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // 日期时间格式
+//                    let formattedDate = dateFormatter.string(from: currentDate)
+//                    print("🌶reloadRows \(content) 时间：\(formattedDate)")
+
+//    private var speechRecognizer : SFSpeechRecognizer =  SFSpeechRecognizer(locale: Locale(identifier: "zh-CN"))!
+//    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+//    private var recognitionTask: SFSpeechRecognitionTask?
+//    private var audioEngine : AVAudioEngine = AVAudioEngine()
+//    private var inputNode: AVAudioInputNode!
+start
+
+//        // 检查是否有任务在运行，如果有则取消
+//        if let recognitionTask = recognitionTask {
+//            recognitionTask.cancel()
+//            self.recognitionTask = nil
+//        }
+//        inputNode = audioEngine.inputNode
+//        // 创建音频会话
+//        let audioSession = AVAudioSession.sharedInstance()
+//        do {
+//            try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
+//            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+//        } catch {
+//            print("音频会话配置失败: \(error.localizedDescription)")
+//        }
+//        
+//        // 创建语音识别请求
+//        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+//        guard let recognitionRequest = recognitionRequest else { fatalError("无法创建 SFSpeechAudioBufferRecognitionRequest") }
+//        recognitionRequest.shouldReportPartialResults = true
+//        
+//        // 启动语音识别任务
+//        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { [unowned self] result, error in
+//            if let result = result {
+//                // 处理识别结果
+//                print("识别结果: \(result.bestTranscription.formattedString)")
+//                self.recognizedText = result.bestTranscription.formattedString
+//            }
+//            
+//            if let error = error {
+//                print("识别错误: \(error.localizedDescription)")
+//                self.audioEngine.stop()
+//                self.audioEngine.inputNode.removeTap(onBus: 0)
+//                self.recognitionRequest = nil
+//                self.recognitionTask = nil
+//            }
+//        }
+//        
+//        
+//        removeTapIfNeeded()
+//        
+//        // 配置音频引擎
+//        let recordingFormat = audioEngine.inputNode.outputFormat(forBus: 0)
+//        audioEngine.inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { [unowned self] buffer, when in
+//            self.recognitionRequest?.append(buffer)
+//            self.updateWave(buffer: buffer)
+//        }
+//        
+//        // 启动音频引擎
+//        audioEngine.prepare()
+//        do {
+//            try audioEngine.start()
+//        } catch {
+//            print("音频引擎启动失败: \(error.localizedDescription)")
+//        }
+//        
+//        print("正在录音...")
+
+stop
+
+//        audioEngine.stop()
+//        recognitionRequest?.endAudio()
+//        recognitionTask?.finish()
+//        recognitionRequest = nil
+//        recognitionTask = nil
+
+func
+
+//    private func removeTapIfNeeded() {
+//        if inputNode.inputFormat(forBus: 0).channelCount > 0 {
+//            inputNode.removeTap(onBus: 0)
+//        }
+//    }
+
+```
+
+StreamRecorder
+
+设计一个tableViewcell，上面有个背景view。（圆角8，背景设蓝色）背景view上有个label（和背景view内间距15，根据label长度和高度撑开背景高度）。这个背景view的约束是 举例左边15像素，最小宽度40，最大宽度是（屏幕宽度-60）centerY居中cell.
+
+设计一个View,view的中间有横向居中排列的30个宽度5高度10的白色view（最左边的view 和最右边的view都要和父视图有50的间隔，每个view之间的间隔为4像素）。根据传入的音量大小（0-1），中间的20个白色view高度改变，如果音量值为0.5，那么这些view高度最大为10*1.5，最小为10。这些变化的view相邻的高度要呈现波浪形、给我swift完整的代码
+
+
+#import "HGCourseService.h"
+#import "HGFloatButton.h"
+/// 教程
+@property (nonatomic, strong) HGFloatButton *courseButton;
+
+HGCourseModel *courseModel = [HGCourseService queryCourseModel:HGAISuperSaleDYTKDevTiktokCus006];
+BOOL shouldAdd = courseModel && [courseModel isOpen] ? YES : NO;
+if (shouldAdd) {
+    self.courseButton = [[HGFloatButton alloc] init];
+    [self.courseButton showVideoCourseWithCode:HGAISuperSaleDYTKDevTiktokCus006
+                                         title:@"给客户发送私信"
+                                         theme:HGFloatCourseThemeBlue
+                             currentController:self];
+}
+
+
+        _searchBarView = [[NSBundle mainBundle] loadNibNamed:@"HGMeetingWordSearchView" owner:self options:nil].firstObject;
+
+# type弹窗
+HGWxGroupChooseAddTypeView
+
+@"http://192.168.100.200:8077";//天林
+HGEnvironmentModel *model = [HGAppService service].environmentModel;
+
+
+# 评论范围
 评论rang 转化
 toRowRangeFromComment
 
-# 7 16
+# 本地搜索
 word_delete_icon
 http://view.xdocin.com/xdoc
-本地搜索
+```objc
 NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(HGFriendModel *evaluatedObject, NSDictionary *bindings) {
             return [evaluatedObject.friendName containsString:searchText];
-        }];
-        self.filteredFriends = [self.dataMuArray filteredArrayUsingPredicate:predicate];
-
+}];
+self.filteredFriends = [self.dataMuArray filteredArrayUsingPredicate:predicate];
+```
 
 JXPagerViewDelegate,JXCategoryViewDelegate
 
 淡蓝色   背景灰色
 EFF4FF  f1f1f1
 字体 999999 灰色  037afe 蓝色
-
-
-swift 的项目，默认进入是登录页面，登录后展示一个tabbarController，下的四个页面。
 
 # 8
 
